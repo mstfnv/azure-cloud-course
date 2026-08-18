@@ -24,3 +24,12 @@ jobs:
           resourceGroupName: rg-cloud-course
           template: ./main.bicep
           parameters: myIpAddress=88.80.101.158
+          
+      - name: Zip app code
+        run: |
+          cd app
+          zip -r ../app.zip .
+          cd ..
+
+      - name: Deploy web app code
+        run: az webapp deploy --resource-group rg-cloud-course --name webapp-cloud-course-2026 --src-path app.zip --type zip
