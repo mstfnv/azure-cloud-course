@@ -5,6 +5,7 @@ param webAppName string = 'webapp-cloud-course-2026'
 param vnetName string = 'vnet-cloud-course'
 param nsgName string = 'nsg-vm-subnet'
 param myIpAddress string = '88.80.101.158'
+param enablePublicBlobAccess bool = true
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   name: storageAccountName
@@ -14,7 +15,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   }
   kind: 'StorageV2'
   properties: {
-    allowBlobPublicAccess: true
+    allowBlobPublicAccess: enablePublicBlobAccess
   }
   tags: {
     project: 'cloud-course'
@@ -40,7 +41,7 @@ resource webApp 'Microsoft.Web/sites@2023-01-01' = {
   properties: {
     serverFarmId: appServicePlan.id
     siteConfig: {
-      linuxFxVersion: 'NODE|22-lts'
+      linuxFxVersion: 'NODE|24-lts'
     }
   }
 }
