@@ -7,4 +7,4 @@ and Azure SQL Database.
 Bicep · GitHub Actions · Azure App Service · Azure SQL · VNet/NSG
 
 ## Deploy
-az deployment group create --resource-group <rg> --template-file main.bicep
+az deployment group create --resource-group rg-cloud-course --template-file main.bicep
